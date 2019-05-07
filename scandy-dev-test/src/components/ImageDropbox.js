@@ -1,6 +1,7 @@
 import React, { useCallback, Fragment } from 'react'
 import { useDropzone } from 'react-dropzone'
 import UploadButton from './UploadButton';
+import ProgressIndicator from './ProgressIndicator';
 // import RemoveButton from './RemoveButton';
 import * as firebase from "firebase/app";
 import 'firebase/storage';
@@ -51,46 +52,44 @@ export default function MyDropzone() {
     fr.readAsDataURL(file);
   }
 
+  // const handleRemove = function(e) {
+  //   e.stopPropagation();
+  //   document.getElementById("imgfile").value = null;
+  // }
+  var progress;
+
+  const handleUpload = function(e) {
+    let storageRef = firebase.storage().ref();
+    let uploadRef = storageRef.child('upload.jpg');
+    let uploadImageRef = storageRef.child('images/upload.jpg');
+    let file = acceptedFiles[0]
+
+    var uploadTask = uploadRef.put(file);
+    uploadTask.on('state_changed', function(snapshot){
+      progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log('Upload is ' + progress + '% done');
+    }, function(error) {
+      // Handle unsuccessful uploads
+      console.log('There was an error during upload!', error)
+    }, function() {
+      // Handle successful uploads on complete
+      uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+        console.log('File available at', downloadURL);
+      });
+    });
+  }
+
   const dropboxStyles = {
     border: '1px dashed #ccc',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'relative'
+    position: 'relative',
   }
 
   const canvasStyles = {
     maxWidth: '100%',
-  }
-
-  // const handleRemove = function(e) {
-  //   e.stopPropagation();
-  //   document.getElementById("imgfile").value = null;
-  // }
-
-  const handleUpload = function(e) {
-    console.log(acceptedFiles[0])
-
-    // Create a root reference
-    var storageRef = firebase.storage().ref();
-
-    // Create a reference to 'upload.jpg'
-    var uploadRef = storageRef.child('upload.jpg');
-
-    // Create a reference to 'images/upload.jpg'
-    var uploadImageRef = storageRef.child('images/upload.jpg');
-
-    // While the file names are the same, the references point to different files
-    // uploadRef.name === uploadImageRef.name            // true
-    // uploadRef.fullPath === uploadImageRef.fullPath    // false
-
-    var file = acceptedFiles[0]
-    uploadRef.put(file).then(function(snapshot) {
-      console.log('Uploaded a blob or file!');
-    });
-
-
   }
 
   const showDropBox = acceptedFiles.length === 0
@@ -98,27 +97,24 @@ export default function MyDropzone() {
   return (
     <Fragment>
     <div style={dropboxStyles} {...getRootProps()}>
-      <form id="dropboxForm">
-        <input id="imgfile" {...getInputProps()} />
-        {
-          showDropBox && 
-          (isDragActive ?
-            <p>Drop your file here ...</p> :
-            <p>Drag 'n' drop your file here, or click to select file</p>
-          )
-        }
-        {
-          !showDropBox &&
-          <Fragment>
-            <canvas id="canvas" style={canvasStyles}></canvas>
-            {/* <RemoveButton handleClick={handleRemove} /> */}
-          </Fragment>
-        }
-      </form>
-    </div>
+      <input id="imgfile" {...getInputProps()} />
       {
-        !showDropBox && <UploadButton handleClick={()=>handleUpload(acceptedFiles)}/>
+        showDropBox && 
+        (isDragActive ?
+          <p>Drop your file here ...</p> :
+          <p>Drag 'n' drop your file here, or click to select file</p>
+        )
       }
+      {
+        !showDropBox &&
+        <Fragment>
+          <canvas id="canvas" style={canvasStyles}></canvas>
+          {/* <RemoveButton handleClick={handleRemove} /> */}
+        </Fragment>
+      }
+    </div>
+    { !showDropBox && <ProgressIndicator progress={progress} /> }
+    { !showDropBox && <UploadButton handleClick={()=>handleUpload(acceptedFiles)}/> }
     </Fragment>
   )
 }

@@ -17,7 +17,7 @@ function PaperSheet(props) {
 
   return (
     <div>
-      <Paper className={classes.root} elevation={1}>
+      <Paper className={classes.root} elevation={0}>
         <ImageDropbox />
       </Paper>
     </div>
