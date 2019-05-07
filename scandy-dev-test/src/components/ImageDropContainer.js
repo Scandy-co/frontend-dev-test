@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import ImageDropbox from './ImageDropbox';
 
 const styles = theme => ({
@@ -19,9 +18,6 @@ function PaperSheet(props) {
   return (
     <div>
       <Paper className={classes.root} elevation={1}>
-        <Typography variant="h5" component="h3">
-          Image Dropbox
-        </Typography>
         <ImageDropbox />
       </Paper>
     </div>
