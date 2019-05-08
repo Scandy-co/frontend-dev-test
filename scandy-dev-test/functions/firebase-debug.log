@@ -1,0 +1,22 @@
+[debug] [2019-05-08T02:56:14.803Z] ----------------------------------------------------------------------
+[debug] [2019-05-08T02:56:14.805Z] Command:       /Users/ngamble/.nvm/versions/node/v11.6.0/bin/node /Users/ngamble/.nvm/versions/node/v11.6.0/bin/firebase functions:shell
+[debug] [2019-05-08T02:56:14.806Z] CLI Version:   6.9.0
+[debug] [2019-05-08T02:56:14.809Z] Platform:      darwin
+[debug] [2019-05-08T02:56:14.809Z] Node Version:  v11.6.0
+[debug] [2019-05-08T02:56:14.810Z] Time:          Tue May 07 2019 22:56:14 GMT-0400 (Eastern Daylight Time)
+[debug] [2019-05-08T02:56:14.810Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-05-08T02:56:14.818Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-05-08T02:56:14.818Z] > authorizing via signed-in user
+[debug] [2019-05-08T02:56:14.819Z] [iam] checking project scandy-dev-test for permissions ["firebase.projects.get"]
+[debug] [2019-05-08T02:56:14.820Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/scandy-dev-test:testIamPermissions  
+
+[debug] [2019-05-08T02:56:15.108Z] <<< HTTP RESPONSE 200
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "11"
+[debug] [2019-05-08T02:56:15.118Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/scandy-dev-test  
+ 
+[debug] [2019-05-08T02:56:15.361Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-08T02:56:15.361Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/857560367946:getServerAppConfig  
+ 
+[debug] [2019-05-08T02:56:15.604Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Emulator running at http://localhost:5001
