@@ -21,7 +21,7 @@ function ButtonAppBar(props) {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-            Scandy Dev Test
+            ImageDrop
           </Typography>
         </Toolbar>
       </AppBar>
