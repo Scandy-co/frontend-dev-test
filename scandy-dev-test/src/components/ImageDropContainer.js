@@ -85,8 +85,8 @@ class ImageDropContainer extends Component {
     const { classes } = this.props;
 
     return (
-      <div>
-        <Paper className={classes.root} elevation={0}>
+      <Paper className={classes.root} elevation={0}>
+        <div className={classes.wrapper}>
           { !uploaded && <ImageDropbox loadImage={(image) => this.handleImageUpdate(image)} /> }
           { imported && <canvas id="canvas" className={classes.canvasStyles}></canvas> }
           { uploading && progress < 100 && (
@@ -96,8 +96,8 @@ class ImageDropContainer extends Component {
           )}
           { imported && !uploading && !uploaded && <UploadButton handleClick={() => this.handleUpload()}/> }
           <SuccessMessage open={uploaded} />
-        </Paper>
-      </div>
+        </div>
+      </Paper>
     )
   }
 }
@@ -107,6 +107,10 @@ const styles = theme => ({
     ...theme.mixins.gutters(),
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
+  },
+  wrapper: {
+    maxWidth: 1500,
+    margin: '0 auto'
   },
   progress: {
     display: 'block',
