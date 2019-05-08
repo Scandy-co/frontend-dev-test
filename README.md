@@ -5,7 +5,7 @@ https://github.com/Scandy-co/frontend-dev-test/wiki/Dev-test-1
 
 ## Getting Started
 - Once you have cloned repo, cd into application folder: ```frontend-dev-test/scandy-dev-test```
-- Run ```npm i```
+- Run ```yarn``` or ```npm i```
 - Run ```npm run start```
 - Create React App should open up a new browser session pointed to localhost:3000
 
@@ -36,5 +36,5 @@ https://github.com/Scandy-co/frontend-dev-test/wiki/Dev-test-1
 ## Approach / Time Management / Takeaways
 - All in all, I had a great time working on this.  In all honesty I think it was definitely the most involved and most challenging coding assessment that I have worked on, but I really enjoyed getting back into React, learning a little more about React Hooks and although was challenged by it, really impressed with Firebase so far.
 - While I did not officially log my time, I did keep a rough journal of my process and my time management.  In total, it took me roughly 8 total hours including planning & architecture, research, dev env setup, coding, and finally documentation.  The vast majority of this time was obviously spent on researching and learning Firebase and the storage event-triggered cloud functions, most notably the 'sendImage' function that emails a download link to the admin.  
-- If I had to do it over again, I would have probably spent a little more time researching / practicing with Firebase cloudfunctions prior to starting on the project and maybe also a little less time on the UI. I tend to get a little carried with perfecting the frontend.
+- If I had to do it over again, I would have probably spent a little more time researching / practicing with Firebase cloudfunctions prior to starting on the project and maybe also a little less time on the UI. I tend to get a little carried with perfecting the frontend.  I also did not take much creative freedom and essentially went straight off of the 'example' in the instructions.  I hope this is ok.  I had several ideas for tweaking the application so that it was somewhat unique to express a little creativity, but as I got into the research and planning stages, I quickly decided that I most likely would not have any spare time to show-off any fancy animation skills (I actually really like playing with CSS animations, slick UI features, etc).  Oh well.
 - Overall, I think that this project does a good job of assessing my skillset and I look forward to hearing your feedback!
